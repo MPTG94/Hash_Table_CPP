@@ -5,20 +5,32 @@
 #include "HashTable.h"
 
 int main() {
-//    HashTable<int> hash = HashTable<int>();
-//    for (int i = 0; i < 1000; ++i) {
+    HashTable<int> hash = HashTable<int>();
+//    for (int i = 0; i < 100; ++i) {
 //        int bla = rand() % 10000;
-//        hash.Insert(bla, new int(bla));
+//        int* temp = new int(bla);
+//        if (hash.Insert(bla, temp) == FAILURE) {
+//            delete temp;
+//        }
 //    }
 
-    List<int> mList = List<int>();
-//    mList.Insert(5, new int(5));
-//    mList.Insert(6, new int(6));
-    for (int i = 0; i < 20000; ++i) {
-        int bla = rand() % 10000;
-        int* temp = new int(bla);
-        mList.Insert(bla, temp);
+    for (int i = 0; i < 1000; ++i) {
+        int* temp = new int(i);
+        if (hash.Insert(i, temp) == FAILURE) {
+            delete temp;
+        }
     }
+
+    for (int i = 0; i < 1000; i+=2) {
+        hash.Remove(i);
+    }
+
+    for (int i = 0; i < 1000; i+=3) {
+        hash.Remove(i);
+    }
+
+    hash.PrintTable();
+
 
     return 0;
 }
